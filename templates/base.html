@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+    <!-- Icon - IconMonster -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css"/>
+    <!-- Mumble UI -->
+    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}"/>
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}"/>
+
+    <title>DevSearch - Connect with Developers!</title>
+</head>
+<body>
+
+{% include 'nav.html' %}
+
+{% for message in messages %}
+<div class="alert alert--success"  id="button_message_id">
+    <p class="alert__message">{{message}}</p>
+    <button type="button" onclick="closebutton()" class="alert__close">X</button>
+</div>
+{% endfor %}
+
+{% block content %}  {% endblock content %}
+
+<script src="{% static 'uikit/app.js' %}"></script>
+<script src="{% static 'styles/app.js' %}"></script>
+<script>
+    function closebutton(){
+        let butonj = document.getElementById("button_message_id");
+        butonj.style.display = 'none'
+ }
+</script>
+</body>
+
+</html>

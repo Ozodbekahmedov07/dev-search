@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth">
+    <div class="card">
+        <div class="auth__header text-center">
+            <a href="/">
+                <img src="images/icon.svg" alt="icon"/>
+            </a>
+            <h3>Account SignUp</h3>
+            <p>Create a new developer account</p>
+        </div>
+
+        <form action="" class="form auth__form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Input:Text -->
+             <div class="form__field">
+                <label for="{{form.first_name.id_for_label}}">First name: </label>
+                {{ form.first_name }}
+            </div>
+             <div class="form__field">
+                <label for="{{form.last_name.id_for_label}}">Last name: </label>
+                {{ form.last_name }}
+            </div>
+            <div class="form__field">
+                <label for="{{form.username.id_for_label}}">UserName: </label>
+                {{ form.username }}
+            </div>
+            <!-- Input:Email -->
+            <div class="form__field">
+                <label for="{{form.email.id_for_label}}">Email Address: </label>
+                {{ form.email }}
+            </div>
+            <!-- Input:Password -->
+            <div class="form__field">
+                <label for="{{form.password1.id_for_label}}">Password: </label>
+                {{form.password1}}
+            </div>
+            <!-- Input:Password -->
+            <div class="form__field">
+                <label for="{{form.password2.id_for_label}}">Confirm Password: </label>
+                {{form.password2}}
+            </div>
+            <div class="auth__actions">
+                <input class="btn btn--sub btn--lg" type="submit" value="Sign  In"/>
+            </div>
+        </form>
+        <div class="auth__alternative">
+            <p>Already have an Account?</p>
+            <a href="{% url 'login' %}">Log In</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

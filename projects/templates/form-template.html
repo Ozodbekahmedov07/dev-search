@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Main Section -->
+<main class="formPage my-xl" xmlns="http://www.w3.org/1999/html">
+        <div class="content-box">
+            <div class="formWrapper">
+                <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+                <br>
+                <form class="form"  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Input:Text -->
+                  <div class="form__field">
+                        <label for="{{form.name.id_for_label}}">Name </label>
+                        {{form.name}}
+                    </div>
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="{{form.description.id_for_label}}">description: </label>
+                        {{form.description}}
+                    </div>
+                    <div class="form__field">
+                        <label for="{{form.image.id_for_label}}">tags: </label>
+                        {{form.image}}
+                    </div>
+                    <div class="form__field">
+                        <label for="{{form.tags.id_for_label}}">tags: </label>
+                        {{form.tags}}
+                    </div>
+                    <div class="form__field">
+                        <label for="{{form.source_link.id_for_label}}">source_link: </label>
+                        {{form.source_link}}
+                    </div>
+                    <div class="form__field">
+                        <label for="{{form.demo_link.id_for_label}}">demo_link: </label>
+                        {{form.demo_link}}
+                    </div>
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">Tags: </label>
+                        <input class="input input--text" id="formInput#text" type="text" name="newtags"
+                            placeholder="Enter text" />
+                    </div>
+
+                    <button class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" >Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

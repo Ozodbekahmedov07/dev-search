@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Main Section -->
+  <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 class="singleProject__subtitle">{{project.name}}</h3>
+          <div class="singleProject__toolStack">
+            {% for tag in project.tags.all %}
+            <span class="tag tag--pill tag--sub tag--lg">
+              <small>{{tag.name}}</small>
+            </span>
+            {% endfor %}
+          </div>
+          <a class="singleProject__liveLink" href="#" target="_blank"><i class="im im-external-link"></i>Source Code
+          </a>
+
+
+        </div>
+        <div class="column column--2of3">
+          <img class="singleProject__preview" src="{% if project.image %} {{project.image.url}} {% else %} {% static 'images/project-images/default-image.jpg' %}  {% endif %}" alt="portfolio thumbnail" />
+          <a href="{% url 'profile' pk=project.owner.id %}" class="singleProject__developer">{{project.owner.name}}</a>
+          <h2 class="singleProject__title">{{project.name}}</h2>
+          <h3 class="singleProject__subtitle">About the Project</h3>
+          <div class="singleProject__info">
+            {{project.description}}
+          </div>
+
+          <div class="comments">
+            <h3 class="singleProject__subtitle">Feedback</h3>
+            <h5 class="project--rating">
+              {{positive_vote}} % Postitive Feedback ({{votes}} Votes)
+            </h5>
+
+            <form class="form" action="" method="POST">
+              {% csrf_token %}
+              <!-- Textarea -->
+              <div class="form__field">
+                {{form.body}}
+               {{ form.text }}
+              </div>
+              <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
+            </form>
+
+
+            <div class="commentList">
+              {% for review in project.reviews_set.all %}
+              <div class="comment">
+                <a href="{% url 'profile' pk=review.owner.id %}">
+                  <img class="avatar avatar--md"
+                    src="{{review.owner.image.url}}" alt="user" />
+                </a>
+                <div class="comment__details">
+                  <a href="{% url 'profile' pk=review.owner.id %}" class="comment__author">{{review.owner.name}}</a>
+                  <p class="comment__info">
+                    {{review.text}}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+{% endblock content %}

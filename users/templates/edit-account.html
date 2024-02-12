@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Main Section -->
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+            <br>
+
+            <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="{{form.username.id_for_label}}">Username: </label>
+                    {{form.username}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.name.id_for_label}}">Name: </label>
+                    {{form.name}}
+                </div>
+                 <div class="form__field">
+                    <label for="{{form.location.id_for_label}}">location: </label>
+                    {{form.location}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.bio.id_for_label}}">bio: </label>
+                    {{form.bio}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.email.id_for_label}}">email: </label>
+                    {{form.email}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.short_intro.id_for_label}}">short_intro: </label>
+                    {{form.short_intro}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.image.id_for_label}}">image: </label>
+                    {{form.image}}
+                </div>
+
+                <div class="form__field">
+                    <label for="{{form.social_github.id_for_label}}">social_github: </label>
+                    {{form.social_github}}
+                </div>
+
+                <div class="form__field">
+                    <label for="{{form.social_linkedin.id_for_label}}">social_linkedin: </label>
+                    {{form.social_linkedin}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.social_stackoverflow.id_for_label}}">social_stackoverflow: </label>
+                    {{form.social_stackoverflow}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.social_twitter.id_for_label}}">social_twitter: </label>
+                    {{form.social_twitter}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.social_website.id_for_label}}">social_website: </label>
+                    {{form.social_website}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.social_telegram.id_for_label}}">social_telegram: </label>
+                    {{form.social_telegram}}
+                </div>
+                <div class="form__field">
+                    <label for="{{form.social_instagram.id_for_label}}">social_instagram: </label>
+                    {{form.social_instagram}}
+                </div>
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit"/>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
+
